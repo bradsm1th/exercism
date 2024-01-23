@@ -7,13 +7,15 @@ def response(hey_bob):
         'default': "Whatever."
     }
     
-    if hey_bob.isspace() or bool(hey_bob) == False:
+    text = hey_bob.strip()
+    
+    if text.isspace() or bool(text) == False:
         return responses['silence']
-    elif hey_bob.rstrip().endswith("?") and hey_bob.isupper():
+    elif text.endswith("?") and text.isupper():
         return responses['yelled question']
-    elif hey_bob.rstrip().endswith("?"):
+    elif text.endswith("?"):
         return responses['question']
-    elif hey_bob.isupper():
+    elif text.isupper():
         return responses['YELL']
     else:
         return responses['default']    
