@@ -17,7 +17,6 @@ def value_of_card(card):
     """
 
     FACES = "JQK"
-    ACE = 1
     
     if card == 'A':
         return 1
@@ -64,9 +63,9 @@ def value_of_ace(card_one, card_two):
     if 'A' == card_one or 'A' == card_two:
         return 1
     else:
-        sum = value_of_card(card_one) + value_of_card(card_two)
+        result = value_of_card(card_one) + value_of_card(card_two)
         # print(f"{sum} (for {value_of_card(card_one)} and {value_of_card(card_two)})")
-        return 11 if sum + 11 < 22 else 1
+        return 11 if result + 11 < 22 else 1
 
 # print(value_of_ace('Q', 'A'))       # 1
 # print(value_of_ace('6', 'K'))       # 1
@@ -85,8 +84,6 @@ def is_blackjack(card_one, card_two):
     3.  '2' - '10' = numerical value.
     """
 
-    WINNER = 21
-    
     if (card_one == 'A' and card_two in 'JKQ10') or (card_two == 'A' and card_one in 'JKQ10'):
         return True
     else:
