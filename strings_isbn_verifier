@@ -1,0 +1,38 @@
+def is_valid(isbn):
+    REQUIRED_LENGTH = 10
+    SUM = 0
+    ALLOWEDS = 'X0123456789'
+    chars_only = ''.join(isbn.split('-')) 
+    if len(chars_only) != REQUIRED_LENGTH:
+        return False
+
+    for each in chars_only:
+        if each not in ALLOWEDS:
+            return False
+
+    for i, val in enumerate(chars_only):
+        if val.upper() == 'X':
+            if i != len(chars_only) - 1:
+                return False
+            else:
+                SUM += (REQUIRED_LENGTH - i) * 10
+        else:
+            SUM += (REQUIRED_LENGTH - i) * int(val)
+
+    # print(len(chars_only) == REQUIRED_LENGTH)
+    # print(SUM)
+    # print(SUM % 11)
+    return SUM % 11 == 0
+
+
+
+# ============================
+# tests
+# ============================
+print(is_valid('3-598-21508-8'))          # True
+print(is_valid('3-598-21508-9'))          # False
+print(is_valid('3-598-21507-X'))          # True
+print(is_valid('4-598-21507-B'))          # False
+print(is_valid('3598P215088'))            # False
+print(is_valid('3-598-21508-8'))          # True
+print(is_valid('3-598-2X507-9'))          # False
