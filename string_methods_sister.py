@@ -45,8 +45,7 @@ def replace_word_choice(sentence, old_word, new_word):
         words = list(sentence.partition(old_word))
         words[1] = new_word
         return "".join(words)
-    else:
-        return sentence
+    return sentence
         
 
 print(replace_word_choice('Animals are cool.', 'small', 'tiny'))
